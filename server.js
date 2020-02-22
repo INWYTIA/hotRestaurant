@@ -1,4 +1,5 @@
 var express = require("express");
+const Table = require('./tables.js');
 
 var app = express();
 var PORT = process.env.PORT || 3000;
