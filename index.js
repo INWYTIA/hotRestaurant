@@ -1,4 +1,3 @@
-//data for testing
 
 var reservations = [
     {
@@ -22,4 +21,3 @@ module.exports = {
     reservations: reservations,
     waitList: waitList
 }
-

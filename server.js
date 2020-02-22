@@ -1,7 +1,8 @@
+
+const path = require("path");
 var express = require("express");
 const index = require("./index.js")
 const Table = require('./tables.js');
-
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -9,9 +10,26 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.listen(PORT, function () {
-  console.log("App listening on PORT " + PORT);
+var reservations = [];
+var waitList = [];
+
+app.post("/api/table", function(req, res) {
+  var newTable = req.body;
+
+  newTable.routeName = newTable.name.replace(/\s+/g, "").toLowerCase();
+
+  console.log(newTable);
+
+  if(reservations.length < 5) {
+    reservations.push(newTable);
+  } else {
+    waitList.push(newTable);
+  }
+
+  res.json(newTable);
 });
+
+
 
 // Routes
 // =============================================
@@ -36,3 +54,6 @@ app.get("/api/waitlistapi", function (req, res) {
   return res.json(index.waitList);
 });
 
+app.listen(PORT, function () {
+  console.log("App listening on PORT " + PORT);
+});
