@@ -2,7 +2,7 @@
 const path = require("path");
 var express = require("express");
 const index = require("./index.js")
-const Table = require('./tables.js');
+const Table = require('./table.js');
 
 var app = express();
 var PORT = process.env.PORT || 3000;
