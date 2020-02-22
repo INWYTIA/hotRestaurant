@@ -1,6 +1,8 @@
-const Table = require("./table");
-const express = require("express");
+
 const path = require("path");
+var express = require("express");
+const index = require("./index.js")
+const Table = require('./tables.js');
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -10,18 +12,6 @@ app.use(express.json());
 
 var reservations = [];
 var waitList = [];
-
-app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "home.html"));
-});
-
-app.get("/add", function(req, res) {
-  res.sendFile(path.join(__dirname, "reserve.html"));
-});
-
-app.get("/api/table", function(req, res) {
-  return res.json(reservations);
-});
 
 app.post("/api/table", function(req, res) {
   var newTable = req.body;
@@ -39,6 +29,31 @@ app.post("/api/table", function(req, res) {
   res.json(newTable);
 });
 
-app.listen(PORT, function() {
+
+
+// Routes
+// =============================================
+app.get("/", function (req, res) {
+  res.sendFile(path.join(__dirname, "main.html"));
+});
+
+app.get("/tables", function (req, res) {
+  res.sendFile(path.join(__dirname, "tables.html"));
+});
+
+app.get("/reservation", function (req, res) {
+  res.sendFile(path.join(__dirname, "reservation.html"));
+});
+
+// Displays tables reserved
+app.get("/api/tablesapi", function (req, res) {
+  return res.json(index.reservations);
+});
+
+app.get("/api/waitlistapi", function (req, res) {
+  return res.json(index.waitList);
+});
+
+app.listen(PORT, function () {
   console.log("App listening on PORT " + PORT);
 });
