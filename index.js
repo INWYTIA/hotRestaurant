@@ -1,3 +1,5 @@
+//data for testing
+
 var reservations = [
     {
         patronName: "Bob",
@@ -15,3 +17,4 @@ var waitList = [
         uniqueID: "asdf1235"
     }
 ];
+
