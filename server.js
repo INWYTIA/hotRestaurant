@@ -34,7 +34,7 @@ app.post("/api/table", function(req, res) {
 // Routes
 // =============================================
 app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "main.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.get("/tables", function (req, res) {
