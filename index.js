@@ -18,3 +18,8 @@ var waitList = [
     }
 ];
 
+module.exports = {
+    reservations: reservations,
+    waitList: waitList
+}
+

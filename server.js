@@ -1,4 +1,5 @@
 var express = require("express");
+const index = require("./index.js")
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -26,10 +27,10 @@ app.get("/reservation", function (req, res) {
 
 // Displays tables reserved
 app.get("/api/tablesapi", function (req, res) {
-  return res.json(reservations);
+  return res.json(index.reservations);
 });
 
 app.get("/api/waitlistapi", function (req, res) {
-  return res.json(waitList);
+  return res.json(index.waitList);
 });
 
