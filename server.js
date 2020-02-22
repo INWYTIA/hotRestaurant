@@ -2,7 +2,7 @@
 const path = require("path");
 var express = require("express");
 const index = require("./index.js")
-const Table = require('./tables.js');
+const Table = require('./table.js');
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -13,14 +13,14 @@ app.use(express.json());
 var reservations = [];
 var waitList = [];
 
-app.post("/api/table", function(req, res) {
+app.post("/api/table", function (req, res) {
   var newTable = req.body;
 
   newTable.routeName = newTable.name.replace(/\s+/g, "").toLowerCase();
 
   console.log(newTable);
 
-  if(reservations.length < 5) {
+  if (reservations.length < 5) {
     reservations.push(newTable);
   } else {
     waitList.push(newTable);
@@ -29,12 +29,10 @@ app.post("/api/table", function(req, res) {
   res.json(newTable);
 });
 
-
-
 // Routes
 // =============================================
 app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "main.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.get("/tables", function (req, res) {
@@ -57,3 +55,4 @@ app.get("/api/waitlistapi", function (req, res) {
 app.listen(PORT, function () {
   console.log("App listening on PORT " + PORT);
 });
+
