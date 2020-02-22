@@ -1,5 +1,6 @@
 const Table = require("./table");
 const express = require("express");
+const path = require("path");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -17,6 +18,22 @@ app.get("/add", function(req, res) {
 
 app.get("/api/table", function(req, res) {
   return res.json(reservations);
+});
+
+app.post("/api/table", function(req, res) {
+  var newTable = req.body;
+
+  newTable.routeName = newTable.name.replace(/\s+/g, "").toLowerCase();
+
+  console.log(newTable);
+
+  if(reservations.length < 5) {
+    reservations.push(newTable);
+  } else {
+    waitList.push(newTable);
+  }
+
+  res.json(newTable);
 });
 
 app.listen(PORT, function() {
