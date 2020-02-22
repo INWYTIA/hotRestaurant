@@ -1,0 +1,2 @@
+var reservations = [];
+var waitList = [];
