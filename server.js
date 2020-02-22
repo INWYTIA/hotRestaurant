@@ -8,6 +8,9 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+var reservations = [];
+var waitList = [];
+
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "home.html"));
 });
