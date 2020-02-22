@@ -5,9 +5,6 @@ class Table {
     this.email = email;
     this.id = id;
   }
-  genericMethod(){
-    console.log("Change this or delete this as needed.")
-  }
 }
 
 module.exports = Table;

@@ -1,3 +1,4 @@
+
 var reservations = [
     {
         patronName: "Bob",
@@ -15,3 +16,8 @@ var waitList = [
         uniqueID: "asdf1235"
     }
 ];
+
+module.exports = {
+    reservations: reservations,
+    waitList: waitList
+}
